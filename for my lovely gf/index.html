@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>testing</title>
+    <style>
+        body {
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 250px;
+            height: auto;
+            margin: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>For My Lovely Girlfriend</h1>
+    
+    <div class="gallery">
+        <img src="assets/foto1.jpeg" alt="Foto 1">
+        <img src="assets/foto2.jpeg" alt="Foto 2">
+        <img src="assets/foto3.jpeg" alt="Foto 3">
+        <img src="assets/foto4.jpeg" alt="Foto 4">
+        <img src="assets/foto5.jpeg" alt="Foto 5">
+        <img src="assets/foto6.jpeg" alt="Foto 6">
+        <img src="assets/foto7.jpeg" alt="Foto 7">
+        <img src="assets/foto8.jpeg" alt="Foto 8">
+    </div>
+
+    <audio autoplay loop>
+        <source src="assets/sempurna.mp3" type="audio/mpeg">
+        
+    </audio>
+</body>
+</html>

@@ -1,0 +1,71 @@
+/* style.css (konsep) */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    font-family: sans-serif;
+    overflow: hidden; /* Prevent scroll on initial load */
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.message-intro, .message-outro {
+    margin-bottom: 30px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.polaroid-camera {
+    width: 300px; /* Adjust size as needed */
+    height: 400px;
+    background-color: #333;
+    border-radius: 15px;
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.photo-output {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px; /* Area where photos come out */
+    height: 280px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Photos stack from bottom */
+}
+
+.polaroid-photo {
+    width: 100%;
+    background-color: white;
+    padding: 10px 10px 30px 10px; /* Polaroid frame effect */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    top: 100%; /* Start off-screen */
+    opacity: 0;
+    transition: top 1s ease-out, opacity 1s ease-out;
+    margin-bottom: 10px; /* Space between photos */
+}
+
+.polaroid-photo img {
+    width: 100%;
+    display: block;
+}
+
+.polaroid-photo .caption {
+    font-size: 0.8em;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Add more CSS for camera details */
