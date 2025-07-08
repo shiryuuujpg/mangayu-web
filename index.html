@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Mangyuk Cantik</title>
+    <style>
+        body {
+            background-color: pink;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            animation: fadeInDown 2s ease-out;
+        }
+
+        #typing-text {
+            color: white;
+            font-size: 1.3em;
+            margin: 15px auto;
+            width: 90%;
+            height: 50px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid white;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
+        }
+
+        #slideshow-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #slideshow img {
+            width: 300px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: opacity 1s ease;
+            display: none;
+        }
+
+        /* Custom Audio Player ala Spotify Pink */
+        .player {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background-color: #ff69b4;
+            padding: 12px 24px;
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            margin: 30px auto;
+            width: fit-content;
+        }
+
+        #song-title {
+            font-size: 0.95em;
+        }
+
+        .pink-btn {
+            background: white;
+            color: #ff69b4;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 14px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .pink-btn:hover {
+            transform: scale(1.1);
+        }
+
+        #progress-bar {
+            width: 180px;
+            height: 5px;
+            border-radius: 5px;
+            appearance: none;
+            background: white;
+            cursor: pointer;
+        }
+
+        #progress-bar::-webkit-slider-thumb {
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #ff1493;
+            margin-top: -3.5px;
+        }
+
+        #audio {
+            display: none;
+        }
+
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #secret-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 20px;
+            background-color: #fff;
+            color: deeppink;
+            cursor: pointer;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        #secret-btn:active {
+            transform: scale(1.1);
+        }
+
+        #secret-message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: white;
+            display: none;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        @keyframes fadeInDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>For My World 💗</h1>
+
+    <div id="typing-text"></div>
+
+    <div id="slideshow-wrapper">
+        <div id="slideshow">
+            <img src="assets/foto1.jpg.JPG" class="slide" style="display:block;">
+            <img src="assets/foto2.jpg.jpg" class="slide">
+            <img src="assets/foto4.jpg.JPG" class="slide">
+            <img src="assets/foto5.jpg.JPG" class="slide">
+            <img src="assets/foto6.jpg.JPG" class="slide">
+        </div>
+    </div>
+
+    <!-- Custom Audio Player ala Spotify Pink -->
+    <div id="custom-audio-player" class="player">
+        <button id="play-btn" class="pink-btn">▶</button>
+        <span id="song-title">Sempurna - Andra & The Backbone</span>
+        <input type="range" id="progress-bar" value="0" max="100">
+    </div>
+    <audio id="audio" src="assets/sempurna.mp3"></audio>
+
+    <div class="centered">
+        <button id="secret-btn">💌 Klik ini dong sayangg</button>
+        <div id="secret-message">Meeting u was like my best part of life, it's too much if I explain how perfect u are haha cukup lagu ini aja yang menjelaskan sayang. I will love u till the world stops running, Mangayu 💖</div>
+    </div>
+
+    <script>
+        // Typing effect
+        const text = "In every universe, in every lifetime, I would always choose you...";
+        let i = 0;
+        const typingDiv = document.getElementById("typing-text");
+
+        function type() {
+            if (i < text.length) {
+                typingDiv.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, 80);
+            }
+        }
+        type();
+
+        // Slideshow otomatis
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("slide");
+
+        function showSlides() {
+            for (let s = 0; s < slides.length; s++) {
+                slides[s].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+
+        // Pesan rahasia dengan fadeIn
+        document.getElementById("secret-btn").onclick = function () {
+            const msg = document.getElementById("secret-message");
+            msg.style.display = "block";
+            setTimeout(() => {
+                msg.style.opacity = 1;
+            }, 50);
+            this.style.display = "none";
+        };
+
+        // Custom Audio Player
+        const audio = document.getElementById("audio");
+        const playBtn = document.getElementById("play-btn");
+        const progressBar = document.getElementById("progress-bar");
+
+        playBtn.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = "⏸";
+            } else {
+                audio.pause();
+                playBtn.textContent = "▶";
+            }
+        });
+
+        audio.addEventListener("timeupdate", () => {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressBar.value = progress;
+        });
+
+        progressBar.addEventListener("input", () => {
+            audio.currentTime = (progressBar.value / 100) * audio.duration;
+        });
+    </script>
+
+</body>
+</html>
